@@ -4,25 +4,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Class to calculate the sum of grades
+ * Class to calculate the average of grades
  * 
  * @author Lauramarie Laskey
  * @version 11/5/22
  *
  */
-public class Sum extends CalculateGrade {
+public class Average extends CalculateGrade {
 
 	/**
-	 * Constructor for sum.
+	 * Constructor for average.
 	 */
-	public Sum() {
+	public Average() {
 
 	}
 	
 	/**
 	 * Method that calculates the value of the grade
 	 * 
-	 * @return sum	of the grades
+	 * @return 	average of the grades
 	 * @param gradeCollection	the collection of grades
 	 * 
 	 */
@@ -30,11 +30,12 @@ public class Sum extends CalculateGrade {
 	public double calculateValue(ArrayList<Grade> gradeCollection) {
 		Iterator<Grade> it = gradeCollection.iterator();
 		double sum = 0;
+		int size = gradeCollection.size();
 	    while (it.hasNext()) {
 	    	Grade aGrade = it.next();
 	    	sum += aGrade.getValue();
 	    }
-		return sum;
+	    return sum / size;
 	}
 
 }
