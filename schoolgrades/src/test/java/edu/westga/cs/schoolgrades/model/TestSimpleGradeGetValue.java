@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * @version 11/5/22
  *
  */
-public class TestSimpleGrade {
+public class TestSimpleGradeGetValue {
 
 	/**
 	 * Testing getValue with valid grade value.
