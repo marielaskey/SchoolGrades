@@ -16,7 +16,7 @@ public class CompositeGrade implements Grade {
 	private CalculateGrade calculationStrategy;
 
 	/**
-	 * Constructor for simple grade.
+	 * Constructor for composite grade.
 	 * 
 	 */
 	public CompositeGrade() {
