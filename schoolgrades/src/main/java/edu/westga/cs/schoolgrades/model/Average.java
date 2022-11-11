@@ -1,6 +1,5 @@
 package edu.westga.cs.schoolgrades.model;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -14,6 +13,7 @@ public class Average extends CalculateGrade {
 
 	/**
 	 * Constructor for average.
+	 * 
 	 */
 	public Average() {
 
@@ -23,19 +23,18 @@ public class Average extends CalculateGrade {
 	 * Method that calculates the value of the grade
 	 * 
 	 * @return 	average of the grades
-	 * @param gradeCollection	the collection of grades
 	 * 
 	 */
 	@Override
-	public double calculateValue(ArrayList<Grade> gradeCollection) {
+	public double calculateValue() {
+		double sum = super.calculateValue();
 		Iterator<Grade> it = gradeCollection.iterator();
-		double sum = 0;
 		int size = gradeCollection.size();
 	    while (it.hasNext()) {
 	    	Grade aGrade = it.next();
 	    	sum += aGrade.getValue();
 	    }
-	    return sum / size;
+	    return Math.round((sum / size) * 100.0) / 100.0;
 	}
 
 }

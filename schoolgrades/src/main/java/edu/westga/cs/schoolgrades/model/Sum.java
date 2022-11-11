@@ -1,6 +1,5 @@
 package edu.westga.cs.schoolgrades.model;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -14,23 +13,23 @@ public class Sum extends CalculateGrade {
 
 	/**
 	 * Constructor for sum.
+	 * 
 	 */
 	public Sum() {
-
+		
 	}
 	
 	/**
 	 * Method that calculates the value of the grade
 	 * 
 	 * @return sum	of the grades
-	 * @param gradeCollection	the collection of grades
 	 * 
 	 */
 	@Override
-	public double calculateValue(ArrayList<Grade> gradeCollection) {
-		Iterator<Grade> it = gradeCollection.iterator();
-		double sum = 0;
-	    while (it.hasNext()) {
+	public double calculateValue() {
+		double sum = super.calculateValue();
+		Iterator<Grade> it = super.gradeCollection.iterator();
+		while (it.hasNext()) {
 	    	Grade aGrade = it.next();
 	    	sum += aGrade.getValue();
 	    }

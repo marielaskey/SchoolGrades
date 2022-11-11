@@ -29,7 +29,7 @@ public class CompositeGrade implements Grade {
 	 */
 	@Override
 	public double getValue() {
-		this.grade = this.calculationStrategy.calculateValue(this.gradeCollection);
+		this.grade = this.calculationStrategy.calculateValue();
 		return this.grade;
 	}
 	
@@ -51,6 +51,7 @@ public class CompositeGrade implements Grade {
 	 */
 	public void setStrategy(CalculateGrade theStrategy) {
 		this.calculationStrategy = theStrategy;
+		this.calculationStrategy.setGradeCollection(this.gradeCollection);
 	}
 
 }
