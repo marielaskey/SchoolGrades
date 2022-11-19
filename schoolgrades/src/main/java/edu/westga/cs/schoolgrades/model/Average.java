@@ -22,7 +22,6 @@ public class Average extends CalculateGrade {
 	/**
 	 * Method that calculates the value of the grade
 	 * 
-	 * @return 	average of the grades
 	 * 
 	 */
 	@Override
