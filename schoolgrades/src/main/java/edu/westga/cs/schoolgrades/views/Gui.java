@@ -2,6 +2,8 @@ package edu.westga.cs.schoolgrades.views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,19 +18,19 @@ import javax.swing.text.Document;
  *
  */
 public class Gui extends GuiWindowBuilderLayout {
-	private DefaultTableModel quizModel;
-	private DefaultTableModel homeworkModel;
-	private DefaultTableModel examModel;
+	private GradeTableModel quizModel;
+	private GradeTableModel homeworkModel;
+	private GradeTableModel examModel;
 
 	public Gui() {
 		super();
-		this.quizModel = new DefaultTableModel();
+		this.quizModel = new GradeTableModel();
 		this.quizModel.addColumn("");
 		this.tableQuiz.setModel(this.quizModel);
-		this.homeworkModel = new DefaultTableModel();
+		this.homeworkModel = new GradeTableModel();
 		this.homeworkModel.addColumn("");
 		this.tableHomework.setModel(this.homeworkModel);
-		this.examModel = new DefaultTableModel();
+		this.examModel = new GradeTableModel();
 		this.examModel.addColumn("");
 		this.tableExam.setModel(this.examModel);
 		super.btnQuiz.addActionListener(new AssignmentListener());
@@ -40,7 +42,7 @@ public class Gui extends GuiWindowBuilderLayout {
 
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			DefaultTableModel modelChanged = null;
+			GradeTableModel modelChanged = null;
 			if (event.getSource() == Gui.super.btnQuiz) {
 				modelChanged = Gui.this.quizModel;
 			} else if (event.getSource() == Gui.super.btnHomework) {
