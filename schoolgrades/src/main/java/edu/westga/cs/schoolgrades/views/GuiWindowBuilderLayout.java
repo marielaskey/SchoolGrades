@@ -160,7 +160,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblFinal);
 		
 		this.textField = new JTextField();
-		this.textField.setBounds(386, 430, 86, 20);
+		this.textField.setBounds(386, 430, 101, 20);
 		getContentPane().add(this.textField);
 		this.textField.setColumns(10);
 		

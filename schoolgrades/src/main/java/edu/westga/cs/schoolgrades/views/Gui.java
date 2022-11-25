@@ -27,12 +27,15 @@ public class Gui extends GuiWindowBuilderLayout {
 		this.quizModel = new GradeTableModel();
 		this.quizModel.addColumn("");
 		this.tableQuiz.setModel(this.quizModel);
+		this.tableQuiz.setDefaultEditor(Object.class, new GradeTableEditor());
 		this.homeworkModel = new GradeTableModel();
 		this.homeworkModel.addColumn("");
 		this.tableHomework.setModel(this.homeworkModel);
+		this.tableHomework.setDefaultEditor(Object.class, new GradeTableEditor());
 		this.examModel = new GradeTableModel();
 		this.examModel.addColumn("");
 		this.tableExam.setModel(this.examModel);
+		this.tableExam.setDefaultEditor(Object.class, new GradeTableEditor());
 		super.btnQuiz.addActionListener(new AssignmentListener());
 		super.btnHomework.addActionListener(new AssignmentListener());
 		super.btnExam.addActionListener(new AssignmentListener());

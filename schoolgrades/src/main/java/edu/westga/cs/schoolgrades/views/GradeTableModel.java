@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.westga.cs.schoolgrades.views;
 
 import java.util.ArrayList;
@@ -20,6 +17,10 @@ public class GradeTableModel extends AbstractTableModel {
 	private ArrayList<Object> columns;
 	private ArrayList<Object[]> rows;
 	
+	/**
+	 * Constructor for the class.
+	 * 	
+	 */
 	public GradeTableModel() {
 		this.columns = new ArrayList<Object>();
 		this.rows = new ArrayList<Object[]>();
@@ -54,6 +55,7 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	/**
 	 * Method to add a column to the table.
+	 * @param aColumn	a column in the table
 	 * 
 	 */
 	public void addColumn(Object aColumn) {
@@ -62,10 +64,30 @@ public class GradeTableModel extends AbstractTableModel {
 	
 	/**
 	 * Method to add a column to the table.
+	 * @param aRow	a row in the table
 	 * 
 	 */
 	public void addRow(Object[] aRow) {
 		this.rows.add(aRow);
 	}
-
+	
+	/**
+	 * Method that allows cell to be editable.
+	 * 
+	 */
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+	    return true;
+	}
+	
+	/**
+	 * Method to set the value entered in a cell.
+	 * 
+	 */
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		this.rows.set(rowIndex, new Object[] { aValue });
+		fireTableCellUpdated(rowIndex, columnIndex);
+	}
+	
 }
