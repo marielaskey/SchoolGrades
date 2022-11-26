@@ -21,7 +21,7 @@ public class GradeTableEditor extends AbstractCellEditor implements TableCellEdi
 	private JSpinner spinner;
 	private SpinnerNumberModel spinnerModel;
 	protected static final String EDIT = "edit";
-	
+
 	/**
 	 * Constructor for GradeTableEditor.
 	 * 

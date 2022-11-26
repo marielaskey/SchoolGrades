@@ -27,6 +27,10 @@ public class Gui extends GuiWindowBuilderLayout {
 	private GradeTableModel homeworkModel;
 	private GradeTableModel examModel;
 
+	/**
+	 * Constructor for Gui
+	 * 
+	 */
 	public Gui() {
 		super();
 		this.guiController = new GuiController(this);
@@ -60,7 +64,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 * @return the quizModel
 	 */
 	public GradeTableModel getQuizModel() {
-		return quizModel;
+		return this.quizModel;
 	}
 
 	/**
@@ -69,7 +73,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 * @return the homeworkModel
 	 */
 	public GradeTableModel getHomeworkModel() {
-		return homeworkModel;
+		return this.homeworkModel;
 	}
 
 	/**
@@ -78,7 +82,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 * @return the examModel
 	 */
 	public GradeTableModel getExamModel() {
-		return examModel;
+		return this.examModel;
 	}
 
 	/**
@@ -89,7 +93,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 */
 	public void subQuiz(Double subtotal) {
 		PlainDocument quizDoc = new PlainDocument();
-		Double roundedSubtotal = Math.round(subtotal*100.0)/100.0;
+		Double roundedSubtotal = Math.round(subtotal * 100.0) / 100.0;
 		try {
 			quizDoc.insertString(0, roundedSubtotal.toString(), null);
 		} catch (BadLocationException ex) {
@@ -106,7 +110,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 */
 	public void subHomework(Double subtotal) {
 		PlainDocument homeworkDoc = new PlainDocument();
-		Double roundedSubtotal = Math.round(subtotal*100.0)/100.0;
+		Double roundedSubtotal = Math.round(subtotal * 100.0) / 100.0;
 		try {
 			homeworkDoc.insertString(0, roundedSubtotal.toString(), null);
 		} catch (BadLocationException ex) {
@@ -123,7 +127,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 */
 	public void subExam(Double subtotal) {
 		PlainDocument examDoc = new PlainDocument();
-		Double roundedSubtotal = Math.round(subtotal*100.0)/100.0;
+		Double roundedSubtotal = Math.round(subtotal * 100.0) / 100.0;
 		try {
 			examDoc.insertString(0, roundedSubtotal.toString(), null);
 		} catch (BadLocationException ex) {
@@ -171,7 +175,7 @@ public class Gui extends GuiWindowBuilderLayout {
 	 */
 	public void setFinalGrade(Double total) {
 		PlainDocument finalDoc = new PlainDocument();
-		Double roundedTotal = Math.round(total*100.0)/100.0;
+		Double roundedTotal = Math.round(total * 100.0) / 100.0;
 		try {
 			finalDoc.insertString(0, roundedTotal.toString(), null);
 		} catch (BadLocationException ex) {
@@ -183,6 +187,8 @@ public class Gui extends GuiWindowBuilderLayout {
 
 	/**
 	 * Method that determines if the lowest homework grade should be dropped.
+	 * 
+	 * @return whether checkbox is selected
 	 *
 	 */
 	public boolean shouldDropHomework() {

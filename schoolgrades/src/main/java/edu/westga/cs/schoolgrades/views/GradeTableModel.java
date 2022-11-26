@@ -16,10 +16,10 @@ public class GradeTableModel extends AbstractTableModel {
 	private static final long serialVersionUID = -1570136284525787480L;
 	private ArrayList<Object> columns;
 	private ArrayList<Object[]> rows;
-	
+
 	/**
 	 * Constructor for the class.
-	 * 	
+	 * 
 	 */
 	public GradeTableModel() {
 		this.columns = new ArrayList<Object>();
@@ -52,34 +52,36 @@ public class GradeTableModel extends AbstractTableModel {
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return this.rows.get(rowIndex)[0];
 	}
-	
+
 	/**
 	 * Method to add a column to the table.
-	 * @param aColumn	a column in the table
+	 * 
+	 * @param aColumn a column in the table
 	 * 
 	 */
 	public void addColumn(Object aColumn) {
 		this.columns.add(aColumn);
 	}
-	
+
 	/**
 	 * Method to add a column to the table.
-	 * @param aRow	a row in the table
+	 * 
+	 * @param aRow a row in the table
 	 * 
 	 */
 	public void addRow(Object[] aRow) {
 		this.rows.add(aRow);
 	}
-	
+
 	/**
 	 * Method that allows cell to be editable.
 	 * 
 	 */
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-	    return true;
+		return true;
 	}
-	
+
 	/**
 	 * Method to set the value entered in a cell.
 	 * 
@@ -98,9 +100,9 @@ public class GradeTableModel extends AbstractTableModel {
 	public Double[] getGrades() {
 		Double[] grades = new Double[this.rows.size()];
 		for (int i = 0; i < this.rows.size(); i++) {
-			grades[i] = (Double)this.rows.get(i)[0];
+			grades[i] = (Double) this.rows.get(i)[0];
 		}
 		return grades;
 	}
-	
+
 }

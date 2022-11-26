@@ -27,6 +27,8 @@ public class GuiController {
 
 	/**
 	 * Constructor for GuiController
+	 * 
+	 * @param theGui the gui
 	 */
 	public GuiController(Gui theGui) {
 		this.gui = theGui;
@@ -37,17 +39,17 @@ public class GuiController {
 	 * 
 	 */
 	public void refreshTotals() {
-		this.quizGrade = buildGrades(this.gui.getQuizModel().getGrades());
+		this.quizGrade = this.buildGrades(this.gui.getQuizModel().getGrades());
 		this.quizGrade.setStrategy(new Average());
-		this.homeworkGrade = buildGrades(this.gui.getHomeworkModel().getGrades());
+		this.homeworkGrade = this.buildGrades(this.gui.getHomeworkModel().getGrades());
 		CalculateGrade theStrategy = new Average();
 		if (this.gui.shouldDropHomework()) {
 			theStrategy.setCalculationDecorator(new DropGrade());
 		}
 		this.homeworkGrade.setStrategy(theStrategy);
-		this.examGrade = buildGrades(this.gui.getExamModel().getGrades());
+		this.examGrade = this.buildGrades(this.gui.getExamModel().getGrades());
 		this.examGrade.setStrategy(new Average());
-				
+
 		WeightedGrade weightedQuizGrade = new WeightedGrade(this.quizGrade.getValue(),
 				new WeightDecorator(this.gui.getQuizWeight()));
 		this.gui.subQuiz(weightedQuizGrade.getValue());
@@ -59,7 +61,7 @@ public class GuiController {
 		WeightedGrade weightedExamGrade = new WeightedGrade(this.examGrade.getValue(),
 				new WeightDecorator(this.gui.getExamWeight()));
 		this.gui.subExam(weightedExamGrade.getValue());
-		
+
 		CompositeGrade finalGrade = new CompositeGrade();
 		finalGrade.addGrade(new SimpleGrade(weightedQuizGrade.getValue()));
 		finalGrade.addGrade(new SimpleGrade(weightedHomeworkGrade.getValue()));
@@ -72,6 +74,9 @@ public class GuiController {
 
 	/**
 	 * Helper method to build Grades
+	 * 
+	 * @param grades the grades
+	 * @return aGrade grade
 	 */
 	private CompositeGrade buildGrades(Double[] grades) {
 		CompositeGrade aGrade = new CompositeGrade();
