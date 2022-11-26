@@ -36,5 +36,18 @@ public class TestCompositeGradeGetValue {
 		testGrade.addGrade(new SimpleGrade(65.2));
 		assertEquals(77.6, testGrade.getValue());
 	}
+	
+	/**
+	 * Testing getValue with valid composite grade value with sum.
+	 * 
+	 */
+	@Test
+	public void testValidCompositeGradeValueSumWithWeightedGrades() {
+		CompositeGrade testGrade = new CompositeGrade();
+		testGrade.addGrade(new WeightedGrade(90, new WeightDecorator(0.5)));
+		testGrade.addGrade(new WeightedGrade(65.2, new WeightDecorator(0.5)));
+		testGrade.setStrategy(new Sum());
+		assertEquals(77.6, testGrade.getValue());
+	}
 
 }

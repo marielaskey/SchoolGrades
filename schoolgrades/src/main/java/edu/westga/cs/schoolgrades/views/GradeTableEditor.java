@@ -28,7 +28,7 @@ public class GradeTableEditor extends AbstractCellEditor implements TableCellEdi
 	 */
 	public GradeTableEditor() {
 		this.spinner = new JSpinner();
-		this.spinnerModel = new SpinnerNumberModel(0.0, 0.0, 100.00, 1.00);
+		this.spinnerModel = new SpinnerNumberModel(0.0, 0.0, 100.00, 1.0);
 		this.spinner.setModel(this.spinnerModel);
 	}
 

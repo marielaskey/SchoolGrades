@@ -4,17 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -114,36 +107,39 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblSubtotals);
 		
 		this.spinnerQuiz = new JSpinner();
-		this.spinnerQuiz.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.1));
+		this.spinnerQuiz.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.01));
 		this.spinnerQuiz.setBounds(148, 287, 94, 20);
 		this.spinnerQuiz.setToolTipText("Enter quiz category weight (0.0 - 1.0)");
 		getContentPane().add(this.spinnerQuiz);
 		
 		this.textFieldQuiz = new JTextField();
+		this.textFieldQuiz.setEditable(false);
 		this.textFieldQuiz.setBounds(148, 318, 94, 20);
 		this.textFieldQuiz.setToolTipText("Displays the subtotal for quiz grades");
 		getContentPane().add(this.textFieldQuiz);
 		this.textFieldQuiz.setColumns(10);
 		
 		this.spinnerHomework = new JSpinner();
-		this.spinnerHomework.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.1));
+		this.spinnerHomework.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.01));
 		this.spinnerHomework.setBounds(253, 287, 120, 20);
 		this.spinnerHomework.setToolTipText("Enter homework category weight (0.0 - 1.0)");
 		getContentPane().add(this.spinnerHomework);
 		
 		this.textFieldHomework = new JTextField();
+		this.textFieldHomework.setEditable(false);
 		this.textFieldHomework.setBounds(253, 318, 120, 20);
 		this.textFieldHomework.setToolTipText("Displays the subtotal for homework grades");
 		getContentPane().add(this.textFieldHomework);
 		this.textFieldHomework.setColumns(10);
 		
 		this.spinnerExam = new JSpinner();
-		this.spinnerExam.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.1));
+		this.spinnerExam.setModel(new SpinnerNumberModel(0.0, 0.0, 1.0, 0.01));
 		this.spinnerExam.setBounds(387, 287, 100, 20);
 		this.spinnerExam.setToolTipText("Enter exam category weight (0.0 - 1.0)");
 		getContentPane().add(this.spinnerExam);
 		
 		this.textFieldExam = new JTextField();
+		this.textFieldExam.setEditable(false);
 		this.textFieldExam.setBounds(387, 318, 100, 20);
 		this.textFieldHomework.setToolTipText("Displays the subtotal for exam grades");
 		getContentPane().add(this.textFieldExam);
@@ -160,6 +156,7 @@ public class GuiWindowBuilderLayout extends JFrame {
 		getContentPane().add(this.lblFinal);
 		
 		this.textField = new JTextField();
+		this.textField.setEditable(false);
 		this.textField.setBounds(386, 430, 101, 20);
 		getContentPane().add(this.textField);
 		this.textField.setColumns(10);

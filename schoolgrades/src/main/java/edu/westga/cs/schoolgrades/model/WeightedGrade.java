@@ -34,10 +34,11 @@ public class WeightedGrade implements Grade {
 	 */
 	@Override
 	public double getValue() {
+		double theGrade = this.grade;
 		if (this.weight != null) {
-			this.grade = this.weight.applyWeight(this.grade);
+			theGrade = this.weight.applyWeight(this.grade);
 		}
-		return this.grade;
+		return theGrade;
 	}
 
 }
