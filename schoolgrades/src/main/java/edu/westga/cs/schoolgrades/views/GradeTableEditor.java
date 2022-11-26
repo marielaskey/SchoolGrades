@@ -1,11 +1,6 @@
-/**
- * 
- */
 package edu.westga.cs.schoolgrades.views;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JSpinner;
@@ -22,7 +17,7 @@ import javax.swing.table.TableCellEditor;
  */
 public class GradeTableEditor extends AbstractCellEditor implements TableCellEditor {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4145617872813860667L;
 	private JSpinner spinner;
 	private SpinnerNumberModel spinnerModel;
 	protected static final String EDIT = "edit";

@@ -89,5 +89,18 @@ public class GradeTableModel extends AbstractTableModel {
 		this.rows.set(rowIndex, new Object[] { aValue });
 		fireTableCellUpdated(rowIndex, columnIndex);
 	}
+
+	/**
+	 * Method that returns the grades from each row in a table.
+	 * 
+	 * @return the grades
+	 */
+	public Double[] getGrades() {
+		Double[] grades = new Double[this.rows.size()];
+		for (int i = 0; i < this.rows.size(); i++) {
+			grades[i] = (Double)this.rows.get(i)[0];
+		}
+		return grades;
+	}
 	
 }
