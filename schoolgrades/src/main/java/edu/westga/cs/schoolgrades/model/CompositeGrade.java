@@ -1,57 +1,100 @@
 package edu.westga.cs.schoolgrades.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * Class for a composite grade
+ * A {@link Grade} representing the aggregation of several other grades. Uses a {@link GradeCalculationStrategy} to determine
+ * the calculation for the aggregate score.
  * 
- * @author Lauramarie Laskey
- * @version 11/5/22
+ * @author lewisb
  *
  */
 public class CompositeGrade implements Grade {
 
-	private double grade;
-	private ArrayList<Grade> gradeCollection;
-	private CalculateGrade calculationStrategy;
-
+	private GradeCalculationStrategy strategy;
+	private final List<Grade> childGrades;
+	
 	/**
-	 * Constructor for composite grade.
+	 * Creates a new CompositeGrade using the given strategy.
 	 * 
+	 * @param strategy the strategy to use for grade calculation. Must not be null.
 	 */
-	public CompositeGrade() {
-		this.gradeCollection = new ArrayList<Grade>();
+	public CompositeGrade(GradeCalculationStrategy strategy) {
+		setGradingStrategy(strategy);
+		this.childGrades = new ArrayList<Grade>();
+	}
+	
+	/**
+	 * Adds a {@link Grade} to the end of this CompositeGrade.
+	 * 
+	 * @param grade the grade to add. Must not be null and must not already exist in this CompositeGrade
+	 */
+	public void add(final Grade grade) {
+		validateGradeNotNull(grade);
+		childGrades.add(grade);
+	}
+	
+	/**
+	 * Adds a {@link Grade} to this CompositeGrade at the given index.
+	 * @param grade the grade to add
+	 * @param index the index at which to add it
+	 */
+	public void add(final Grade grade, int index) {
+		validateGradeNotNull(grade);
+		childGrades.add(index, grade);
+	}
+	
+	/**
+	 * Removes the {@link Grade}  at the given index.
+	 * @param grade the grade to remove
+	 * @param index the index at which to remove it
+	 */
+	public void removeAt(int index) {
+		childGrades.remove(index);
 	}
 
+	private void validateGradeNotNull(final Grade grade) {
+		if (grade == null) {
+			throw new IllegalArgumentException("grade can not be null");
+		}
+	}
+	
 	/**
-	 * Getter method for the grade.
+	 * Gets the {@link Grade}s contained in this CompositeGrade
 	 * 
+	 * @return all contained grades
 	 */
+	public List<Grade> getGrades() {
+		return Collections.unmodifiableList(childGrades);
+	}
+	
 	@Override
 	public double getValue() {
-		this.grade = this.calculationStrategy.calculateValue();
-		return this.grade;
+		return strategy.calculate(childGrades);
 	}
-	
+
 	/**
-	 * Method to add grade to the collection.
+	 * Convenience method to add all grades in the list.
 	 * 
-	 * @param aGrade	a grade added to the collection
-	 * 
+	 * @param grades the list of grades to add. Will not allow duplicates or nulls inside the list.
 	 */
-	public void addGrade(Grade aGrade) {
-		this.gradeCollection.add(aGrade);
+	public void addAll(List<? extends Grade> grades) {
+		if (grades == null) {
+			throw new IllegalArgumentException("grades can not be null");
+		}
+		
+		for (Grade grade: grades) {
+			this.add(grade);
+		}
 	}
-	
-	/**
-	 * Method that sets the strategy used to calculate the grade.
-	 * 
-	 * @param theStrategy	the strategy set to calculate the grade
-	 * 
-	 */
-	public void setStrategy(CalculateGrade theStrategy) {
-		this.calculationStrategy = theStrategy;
-		this.calculationStrategy.setGradeCollection(this.gradeCollection);
+
+	public void setGradingStrategy(GradeCalculationStrategy strategy) {
+		if (strategy == null) {
+			throw new IllegalArgumentException("strategy should not be null");
+		}
+		this.strategy = strategy;
 	}
 
 }

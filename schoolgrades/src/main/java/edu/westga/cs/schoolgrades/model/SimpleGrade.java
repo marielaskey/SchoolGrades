@@ -1,36 +1,40 @@
 package edu.westga.cs.schoolgrades.model;
 
 /**
- * Class for a simple grade
+ * A {@link Grade} with a constant value.
  * 
- * @author Lauramarie Laskey
- * @version 11/5/22
+ * @author lewisb
  *
  */
 public class SimpleGrade implements Grade {
-	
-	private double grade;
+	private double value;
 
 	/**
-	 * Constructor for simple grade.
+	 * Creates a SimpleGrade with the given value.
 	 * 
-	 * @param grade	the numerical grade
-	 * 
+	 * @param value the assigned numerical grade. Must be >= 0
 	 */
-	public SimpleGrade(double grade) throws IllegalArgumentException {
-		this.grade = grade;
-		if (this.grade < 0) {
-			throw new IllegalArgumentException("Invalid grade value");
-		}
+	public SimpleGrade(double value) {
+		setValue(value);
 	}
-
-	/**
-	 * Getter method for the grade.
-	 * 
-	 */
+	
 	@Override
 	public double getValue() {
-		return this.grade;
+		return value;
 	}
-
+	
+	/**
+	 * Sets the value.
+	 * 
+	 * @param value
+	 */
+	public void setValue(double value) {
+		if (value < 0) {
+			throw new IllegalArgumentException("value should not be < 0");
+		}
+		
+		this.value = value;
+	}
+	
+	
 }

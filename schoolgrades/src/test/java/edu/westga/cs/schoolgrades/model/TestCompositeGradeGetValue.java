@@ -1,53 +1,18 @@
 package edu.westga.cs.schoolgrades.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * Testing for CompositeGrade
- * 
- * @author Lauramarie Laskey
- * @version 11/5/22
- *
- */
-public class TestCompositeGradeGetValue {
+class TestCompositeGradeGetValue {
 
-	/**
-	 * Testing getValue with valid grade value with sum.
-	 */
 	@Test
-	public void testValidCompositeGradeValueSum() {
-		CompositeGrade testGrade = new CompositeGrade();
-		testGrade.setStrategy(new Sum());
-		testGrade.addGrade(new SimpleGrade(90));
-		testGrade.addGrade(new SimpleGrade(65.2));
-		assertEquals(155.2, testGrade.getValue());
-	}
-	
-	/**
-	 * Testing getValue with valid grade value with average.
-	 */
-	@Test
-	public void testValidCompositeGradeValueAvg() {
-		CompositeGrade testGrade = new CompositeGrade();
-		testGrade.setStrategy(new Average());
-		testGrade.addGrade(new SimpleGrade(90));
-		testGrade.addGrade(new SimpleGrade(65.2));
-		assertEquals(77.6, testGrade.getValue());
-	}
-	
-	/**
-	 * Testing getValue with valid composite grade value with sum.
-	 * 
-	 */
-	@Test
-	public void testValidCompositeGradeValueSumWithWeightedGrades() {
-		CompositeGrade testGrade = new CompositeGrade();
-		testGrade.addGrade(new WeightedGrade(90, new WeightDecorator(0.5)));
-		testGrade.addGrade(new WeightedGrade(65.2, new WeightDecorator(0.5)));
-		testGrade.setStrategy(new Sum());
-		assertEquals(77.6, testGrade.getValue());
+	void shouldGetValue() {
+		CompositeGrade composite = new CompositeGrade(new SumOfGradesStrategy());
+		composite.add(new SimpleGrade(10));
+		composite.add(new SimpleGrade(20));
+		composite.add(new SimpleGrade(30));
+		assertEquals(60, composite.getValue(), 0.01);
 	}
 
 }
